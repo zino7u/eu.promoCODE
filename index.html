@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 EM Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        #intro, #shop, #selection, #payment {
+            display: none;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .box {
+            border: 2px solid #000;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #login input {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #login button {
+            background-color: #28a745;
+        }
+        #login button:hover {
+            background-color: #218838;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="intro" class="container">
+        <h1>Willkommen zum 2024 EM Code Shop</h1>
+    </div>
+
+    <div id="shop" class="container">
+        <div class="box">
+            <h2>Kaufe den Adidas Promo Code</h2>
+            <button onclick="goToSelection()">Kaufen</button>
+        </div>
+    </div>
+
+    <div id="selection" class="container">
+        <div class="box">
+            <h2>Wähle aus</h2>
+            <button onclick="goToPayment('Premium EU')">Premium EU: Schencke 10 Personen deinen Code</button>
+            <button onclick="goToPayment('Basic')">Basic: Benutzte die 200€ für dich</button>
+        </div>
+    </div>
+
+    <div id="payment" class="container">
+        <div class="box">
+            <h2>Zahlungsmethode</h2>
+            <button onclick="showLogin('PayPal')">PayPal</button>
+            <button onclick="showLogin('Sparkasse')">Sparkasse</button>
+            <div id="login" style="display:none;">
+                <h3>Anmelden</h3>
+                <input type="email" placeholder="Email"><br>
+                <input type="password" placeholder="Passwort"><br>
+                <button onclick="showError()">Anmelden</button>
+                <p id="error" style="color:red; display:none;">Fehler: falsche Daten</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startIntro() {
+            document.getElementById('intro').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('intro').style.display = 'none';
+                document.getElementById('shop').style.display = 'flex';
+            }, 3000);
+        }
+
+        function goToSelection() {
+            document.getElementById('shop').style.display = 'none';
+            document.getElementById('selection').style.display = 'flex';
+        }
+
+        function goToPayment(option) {
+            document.getElementById('selection').style.display = 'none';
+            document.getElementById('payment').style.display = 'flex';
+        }
+
+        function showLogin(method) {
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function showError() {
+            document.getElementById('error').style.display = 'block';
+        }
+
+        // Start the intro when the page loads
+        window.onload = startIntro;
+    </script>
+
+</body>
+</html>
